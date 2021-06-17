@@ -5,9 +5,15 @@ var WebSocket = require("ws");
 var express = require('express'), app = express(), bodyParser = require('body-parser');
 var mysql = require('mysql');
 var http = require('http');
+var os = require('os');
+var networkInterfaces =  os.networkInterfaces();
+var arr = networkInterfaces['Local Area Connection 3'];
+var ip = arr[1].address;
+
+const results = Object.create(null); // Or just '{}', an empty object
 
 var connection = mysql.createConnection({
-    host: 'localhost',
+    host: ip,
     user: 'root',
     password: 'MortyAndLouis44242B',
     database: 'emw_db'
